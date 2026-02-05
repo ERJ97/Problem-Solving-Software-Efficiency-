@@ -29,15 +29,3 @@ print(test2)
 test3 = search('5555501')
 print(test3)
 
-
-
-
-# print(students)
-
-# for student in students: 
-#    if student['name'] == 'Betsy':
-#       print(student)
-
-#for student in students: 
-#    if student['student_number'] == '1255': 
-#        print(student)

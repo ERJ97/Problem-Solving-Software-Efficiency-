@@ -18,7 +18,7 @@ def search(code):
 
 
 def main():
-    attempts = 2
+   # attempts = 2
 
     try:
         # Attempt 1
