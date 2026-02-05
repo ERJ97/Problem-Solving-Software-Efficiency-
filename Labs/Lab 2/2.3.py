@@ -9,24 +9,39 @@ access_codes = [
     {'name': 'Luigi', 'code': '3572'},
 ]
 
-def search(query):
+def search(code):
     for access in access_codes:
-        if (access['code'] == query):
+        if (access['code'] == code):
             return access['name']
     return None
-        
-
-try: 
-    code = input("Enter access code: ")
-    name = search(code) # stores returned dictionary name.  
-    print(f"ACCESS GRANTED - Welcome {name}")
-except LookupError:
-    print("Incorrect, you have one attempt remaining. ") 
 
 
-    try: 
+
+def main():
+    attempts = 2
+
+    try:
+        # Attempt 1
         code = input("Enter access code: ")
         name = search(code)
+
+        if name is None:
+            raise LookupError("Invalid code")
+
         print(f"ACCESS GRANTED - Welcome {name}")
-    except LookupError: 
-        raise RuntimeError ("Access attempts failed.")
+        return
+
+    except LookupError:
+            print("Incorrect, you have one attempt remaining.")
+
+    # Attempt 2
+    code = input("Enter access code: ")
+    name = search(code)
+
+    if name is None:
+        raise RuntimeError("Access attempts failed.")
+
+    print(f"ACCESS GRANTED - Welcome {name}")
+
+
+main()
