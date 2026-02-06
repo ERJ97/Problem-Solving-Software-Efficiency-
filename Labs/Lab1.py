@@ -55,7 +55,7 @@ print("Lowercase String: ", Sentance.lower())
 
 print("Index of 'versatile': ", Sentance.find("versatile"))
 
-print("List of words: ", Sentance.split(" "))
+print("List of words: ", Sentance.split())
 
 
 # Tuples vs Lists 

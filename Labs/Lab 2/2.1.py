@@ -8,24 +8,25 @@ students =[
     {'name': 'Adele', 'student_number': '1258', 'telephone_number': '5555505'},
 ]
 
-# define function: 
+try: 
+    user_validation = input("Input search request: ").strip() # removed whitespace - validation 
 
-def search(query):
-    for student in students: 
-        if (student['name'] == query or
-            student['student_number'] == query or
-            student['telephone_number'] == query):
-            return student
-    return None
+    if user_validation.isdigit():
+        query = user_validation
+    else: 
+        query = user_validation.lower()
 
-# loop scope is defined by indentation!
+    def search(query):
+        for student in students: 
+            if (student['name'].lower() == query or
+                student['student_number'] == query or
+                student['telephone_number'] == query):
+                return student
+        return None 
+    
+    userInput = search(query)
+    print("Information found: ", userInput)
 
-test1 = search('Lina')
-print(test1)
-
-test2 = search('1258')
-print(test2)
-
-test3 = search('5555501')
-print(test3)
+except LookupError as e:
+    print("No student match", e)
 

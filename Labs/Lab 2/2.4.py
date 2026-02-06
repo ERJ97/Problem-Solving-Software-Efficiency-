@@ -1,4 +1,7 @@
 
+# Needs cleaning up. Have the add logic function but now need to add a main.
+
+
 # Superclass Campus Member 
 class campus_member:
     def __init__(self, name, ID_Number):
@@ -38,15 +41,11 @@ class staff(campus_member):
 # must use {} not []
 directory = {}
 
-# add data 
-
-student1 = student("John", "12345", "Computer Science")
-staff1 = staff("Jane", "54321", "Maths")
 
 # add ID as a key 
 
-directory[student1.ID_Number] = student1
-directory[staff1.ID_Number] = staff1 
+#directory[student1.ID_Number] = student1
+#directory[staff1.ID_Number] = staff1 
 
 def search(ID):
     if ID in directory: 
@@ -63,5 +62,33 @@ member = search(ID)
 if member:
     member.display()
 
+    # add bit to make you able to do this in the terminal. 
+    # As in add objects to directory, then an option to search 
+
+
+def add_member():
+    print("Add new campus member \n")
+    name = input("Enter name:")
+    ID = input("Enter ID: ")
+
+    if ID in directory:
+        print("That ID already exists in directory")
+        return 
+
+    member_type = input("Student or Staff?").strip().lower()
+    
+    if member_type == "student":
+        degree = input("Degree program: ")
+        directory[ID] = student(name, ID, degree)
+
+    elif member_type == "staff": 
+        department = input("Deparment: ")
+        directory[ID] = staff(name, ID, department)
+
+    else: 
+        print("Invalid")
+        return
+
+    print("Member added successfully!")
 
 
