@@ -1,7 +1,4 @@
 
-# Needs cleaning up. Have the add logic function but now need to add a main.
-
-
 # Superclass Campus Member 
 class campus_member:
     def __init__(self, name, ID_Number):
@@ -20,8 +17,7 @@ class student(campus_member):
         super().__init__(name, ID_Number)
 
         self.degree_program = degree_program 
-
-        # Display degree with info from super 
+ 
     def display(self):
         super().display()
         print(f"Degree Programme:  {self.degree_program}")
@@ -38,34 +34,8 @@ class staff(campus_member):
         super().display()
         print(f"Department: {self.department}")
 
-# must use {} not []
 directory = {}
-
-
-# add ID as a key 
-
-#directory[student1.ID_Number] = student1
-#directory[staff1.ID_Number] = staff1 
-
-def search(ID):
-    if ID in directory: 
-        return directory[ID]
-    else: 
-        print("ID does not exist in directory")
-        return None
-    
-# Search directory 
-
-ID = input("Enter ID to search: ")
-member = search(ID)
-
-if member:
-    member.display()
-
-    # add bit to make you able to do this in the terminal. 
-    # As in add objects to directory, then an option to search 
-
-
+ 
 def add_member():
     print("Add new campus member \n")
     name = input("Enter name:")
@@ -90,5 +60,69 @@ def add_member():
         return
 
     print("Member added successfully!")
+
+# Search directory 
+
+def search_member():
+    print("--- Search directory --- ")
+    ID = input("Enter ID to search: ")
+
+    member = directory.get(ID)
+    if member: 
+        print("\n Match found: ")
+        member.display() 
+    else: 
+        print("No match found")  
+
+
+# Remove a member 
+
+def remove_member():
+    print("--- Remove member ---")
+    ID = input("Enter ID to remove: ")  
+
+    if ID in directory: 
+        del directory[ID]
+        print("Member removed successfully!")
+    else: 
+        print("No member exists with that ID.")
+
+def view_directory(): 
+    print(" --- Directory ---")
+    if not directory: 
+        print("Directory is empty.")
+        return
+    for ID, member in directory.items(): 
+        print("-----")
+        member.display()
+
+# Main menu loop: 
+
+def main(): 
+    while True: 
+        print("---------- Campus Directory - Menu ---------- ")
+        print("1 - Add Member")
+        print("2 - Search Member")
+        print("3 - Remove Member")
+        print("4 - View Directory")
+        print("5 - Exit")
+
+        choice = input("Choose an option: ").strip()
+
+        if choice == "1":
+            add_member()
+        elif choice == "2":
+            search_member()
+        elif choice == "3":
+            remove_member()
+        elif choice == "4":
+            view_directory()
+        elif choice == "5":
+            print("Exiting program.")
+            break 
+        else: 
+            print("Invalid choice. Try again.")
+
+main()
 
 
