@@ -29,7 +29,7 @@ try:
         test1 = search(input("Eneter extension to contact:"))
         print("Extension found", test1)
     except LookupError as e: 
-        print("Lookup failed:", e)
+        print("Lookup failed.\n", e)
 
     print("Valid extensions:")
     for ext_no, location in extensions.items(): 
